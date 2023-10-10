@@ -4,12 +4,12 @@
   <arg name="load_gripper" default="false"/>
 
   <!-- Launch real-robot control -->
-  <include file="$(find franka_control)/launch/franka_control.launch" pass_all_args="true" />
+  <include file="$(find franka_control)/launch/franka_control_sppa.launch" pass_all_args="true" />
 
   <!-- By default use joint position controllers -->
   <arg name="transmission" default="position" />
   <!-- Start ROS controllers -->
-  <include file="$(dirname)/ros_controllers.launch" pass_all_args="true" />
+  <!-- <include file="$(dirname)/ros_controllers.launch" pass_all_args="true" /> -->
 
   <!-- as well as MoveIt demo -->
   <include file="$(dirname)/demo.launch" pass_all_args="true">
@@ -17,6 +17,6 @@
     <arg name="load_robot_description" value="false" />
     <!-- MoveItSimpleControllerManager provides ros_control's JointTrajectory controllers
          as well as GripperCommand actions -->
-    <arg name="moveit_controller_manager" value="simple" />
+    <arg name="moveit_controller_manager" value="fake" />
   </include>
 </launch>
